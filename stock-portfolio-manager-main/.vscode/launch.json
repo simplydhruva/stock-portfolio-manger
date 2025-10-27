@@ -1,0 +1,25 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug Stock Portfolio Manager",
+            "request": "launch",
+            "mainClass": "com.stockportfolio.App",
+            "projectName": "StockPortfolioManager",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "vmArgs": "-Djava.library.path=${workspaceFolder}/lib"
+        },
+        {
+            "type": "java",
+            "name": "Run Stock Portfolio Manager",
+            "request": "launch",
+            "mainClass": "com.stockportfolio.App",
+            "projectName": "StockPortfolioManager",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "vmArgs": "-Djava.library.path=${workspaceFolder}/lib"
+        }
+    ]
+}

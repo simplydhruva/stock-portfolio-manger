@@ -1,0 +1,120 @@
+Invalid value for option '--class-path' (PATH): cannot convert '.:lib/junit-jupiter-5.10.0.jar:src:test' to Path (java.nio.file.InvalidPathException: Illegal char <:> at index 1: .:lib/junit-jupiter-5.10.0.jar:src:test)
+Usage: execute [-h] [--disable-ansi-colors] [--disable-banner]
+               [--fail-if-no-tests] [--scan-modules] [--single-color]
+               [--scan-classpath[=PATH]]... [--color-palette=FILE]
+               [--details=MODE] [--details-theme=THEME] [--reports-dir=DIR]
+               [-c=CLASS]... [--config=KEY=VALUE]... [-cp=PATH]... [-d=DIR]...
+               [-e=ID]... [-E=ID]... [--exclude-package=PKG]... [-f=FILE]...
+               [-i=TYPE:VALUE[INDEX(..INDEX)?(,INDEX(..INDEX)?)*]]...
+               [--include-package=PKG]... [-m=NAME]... [-n=PATTERN]...
+               [-N=PATTERN]... [-o=NAME]... [-p=PKG]... [-r=RESOURCE]...
+               [-t=TAG]... [-T=TAG]... [-u=URI]...
+Execute tests
+      --disable-ansi-colors  Disable ANSI colors in output (not supported by
+                               all terminals).
+      --disable-banner       Disable print out of the welcome message.
+  -h, --help                 Display help information.
+
+SELECTORS
+
+  -c, --select-class=CLASS   Select a class for test discovery. This option can
+                               be repeated.
+  -d, --select-directory=DIR Select a directory for test discovery. This option
+                               can be repeated.
+  -f, --select-file=FILE     Select a file for test discovery. This option can
+                               be repeated.
+  -i, --select-iteration=TYPE:VALUE[INDEX(..INDEX)?(,INDEX(..INDEX)?)*]
+                             Select iterations for test discovery (e.g. method:
+                               com.acme.Foo#m()[1..2]). This option can be
+                               repeated.
+  -m, --select-method=NAME   Select a method for test discovery. This option
+                               can be repeated.
+  -o, --select-module=NAME   Select single module for test discovery. This
+                               option can be repeated.
+  -p, --select-package=PKG   Select a package for test discovery. This option
+                               can be repeated.
+  -r, --select-resource=RESOURCE
+                             Select a classpath resource for test discovery.
+                               This option can be repeated.
+      --scan-classpath, --scan-class-path[=PATH]
+                             Scan all directories on the classpath or explicit
+                               classpath roots. Without arguments, only
+                               directories on the system classpath as well as
+                               additional classpath entries supplied via -cp
+                               (directories and JAR files) are scanned.
+                               Explicit classpath roots that are not on the
+                               classpath will be silently ignored. This option
+                               can be repeated.
+      --scan-modules         Scan all resolved modules for test discovery.
+  -u, --select-uri=URI       Select a URI for test discovery. This option can
+                               be repeated.
+
+FILTERS
+
+  -e, --include-engine=ID    Provide the ID of an engine to be included in the
+                               test run. This option can be repeated.
+  -E, --exclude-engine=ID    Provide the ID of an engine to be excluded from
+                               the test run. This option can be repeated.
+      --exclude-package=PKG  Provide a package to be excluded from the test
+                               run. This option can be repeated.
+      --include-package=PKG  Provide a package to be included in the test run.
+                               This option can be repeated.
+  -n, --include-classname=PATTERN
+                             Provide a regular expression to include only
+                               classes whose fully qualified names match. To
+                               avoid loading classes unnecessarily, the default
+                               pattern only includes class names that begin
+                               with "Test" or end with "Test" or "Tests". When
+                               this option is repeated, all patterns will be
+                               combined using OR semantics. Default: ^(Test.*|.+
+                               [.$]Test.*|.*Tests?)$
+  -N, --exclude-classname=PATTERN
+                             Provide a regular expression to exclude those
+                               classes whose fully qualified names match. When
+                               this option is repeated, all patterns will be
+                               combined using OR semantics.
+  -t, --include-tag=TAG      Provide a tag or tag expression to include only
+                               tests whose tags match. When this option is
+                               repeated, all patterns will be combined using OR
+                               semantics.
+  -T, --exclude-tag=TAG      Provide a tag or tag expression to exclude those
+                               tests whose tags match. When this option is
+                               repeated, all patterns will be combined using OR
+                               semantics.
+
+RUNTIME CONFIGURATION
+
+      --config=KEY=VALUE     Set a configuration parameter for test discovery
+                               and execution. This option can be repeated.
+      -cp, --classpath, --class-path=PATH
+                             Provide additional classpath entries -- for
+                               example, for adding engines and their
+                               dependencies. This option can be repeated.
+
+CONSOLE OUTPUT
+
+      --color-palette=FILE   Specify a path to a properties file to customize
+                               ANSI style of output (not supported by all
+                               terminals).
+      --details=MODE         Select an output details mode for when tests are
+                               executed. Use one of: none, summary, flat, tree,
+                               verbose, testfeed. If 'none' is selected, then
+                               only the summary and test failures are shown.
+                               Default: tree.
+      --details-theme=THEME  Select an output details tree theme for when tests
+                               are executed. Use one of: ascii, unicode.
+                               Default is detected based on default character
+                               encoding.
+      --single-color         Style test output using only text attributes, no
+                               color (not supported by all terminals).
+
+REPORTING
+
+      --fail-if-no-tests     Fail and return exit status code 2 if no tests are
+                               found.
+      --reports-dir=DIR      Enable report output into a specified local
+                               directory (will be created if it does not exist).
+
+WARNING: Delegated to the 'execute' command.
+         This behaviour has been deprecated and will be removed in a future release.
+         Please use the 'execute' command directly.

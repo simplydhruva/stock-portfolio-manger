@@ -1,0 +1,230 @@
+STOCK PORTFOLIO MANAGER - COMPREHENSIVE CAPABILITIES AND FEATURES
+
+This document compiles all detailed capabilities and features from the Stock Portfolio Manager application, based on the contents of capabilities.txt and features.txt files in the 'stock portfolio manager app' and 'StockPortfolioManager' directories. The application is a production-ready, enterprise-grade Java-based desktop platform for stock trading, portfolio management, and advanced financial analytics.
+
+=== APPLICATION OVERVIEW ===
+The Stock Portfolio Manager is a full-featured desktop application built with Java Swing (JDK 8+), featuring a modern GUI, real-time data integration, AI-powered analytics, social trading, gamification, advanced security, multi-currency support, tax reporting, educational content, and accessibility features. It supports stock trading, cryptocurrency trading, portfolio management, algorithmic trading, and comprehensive reporting with professional-grade capabilities. The project is approximately 95% complete, with over 60 Java classes, modular architecture, and Docker deployment support.
+
+=== CORE ARCHITECTURE ===
+- Language: Java (JDK 8+) with modern programming practices
+- GUI Framework: Java Swing with custom modern components, themes (dark/light), and responsive layouts using GridBagLayout
+- Database: H2 embedded database (file-based and in-memory) with automated migration from legacy files (e.g., users.txt, portfolios.txt); extensible to PostgreSQL/MySQL
+- Persistence: JDBC-based with comprehensive caching (Guava), connection pooling simulation, prepared statements, indexing, and query optimization
+- Networking: HTTP clients for API integration, WebSocket for real-time updates with sub-second latency
+- Security: Enterprise-grade AES-256 encryption, SHA-256 hashing with salt, JWT token management with refresh rotation, MFA (TOTP via Google Authenticator), biometric simulation (fingerprint/face recognition), fraud detection algorithms, rate limiting, DDoS protection, zero-knowledge proof authentication, and comprehensive security event logging
+- Build Tool: Maven (pom.xml for dependencies); supports Gradle
+- Deployment: Docker containerization with Dockerfile and docker-compose.yml; Kubernetes-ready microservices architecture; auto-scaling, load balancing, Redis caching, CDN integration, high availability (99.9% uptime)
+- Testing: Comprehensive integration testing framework (SystemIntegrationTest.java); performance metrics and monitoring with Micrometer
+- IDE Support: VSCode with launch.json for debugging/running, proper classpath
+- Project Structure:
+  - README.md: Basic project description
+  - TODO.md: Implementation plan and progress tracking
+  - features.txt / capabilities.txt: Feature documentation (this compilation)
+  - lib/: External JARs (h2-2.2.224.jar, mysql-connector-java-8.0.33.jar)
+  - src/: All Java source files; data/ subdirectory for H2 database files
+  - .vscode/: VSCode configurations
+  - SecureAPI/: Separate module for security (PasswordSecurity.java, BiometricAuthentication.java, JWTTokenManager.java, DataEncryption.java, OTPSender.java)
+- Performance Optimizations: Advanced caching, lazy loading, background processing (non-blocking), memory management, concurrent multi-threaded operations
+- Monitoring: System health, alerting, metrics collection
+
+=== USER MANAGEMENT SYSTEM ===
+- Secure user registration with validation
+- Authentication: Login with username/password; session management with automatic logout and timeout
+- Profile Management: Update personal information, preferences, trading statistics
+- Password Security: SHA-256 hashing with salt, strength requirements
+- Multi-Factor Authentication (MFA): TOTP-based OTP system with time-sensitive verification; biometric support (simulation)
+- Biometric Authentication: Fingerprint/face recognition simulation
+- User Roles: Basic roles (extensible to admin/trader); role-based access controls
+- Account Recovery: Password reset mechanisms (simulated)
+- User Profiles: Trading statistics, performance leaderboards, verified track records
+
+=== CORE PORTFOLIO MANAGEMENT ===
+- Multi-portfolio creation and management with real-time valuation tracking
+- Complete transaction recording system for buy/sell orders with detailed history and audit trails
+- Advanced portfolio performance analytics: Real-time P&L calculations, returns, historical performance tracking
+- Risk Assessment: Volatility metrics, Value at Risk (VaR), Sharpe ratio, Monte Carlo simulations
+- Dynamic holdings overview with interactive asset allocation visualization (sector analysis, heat maps, diversification)
+- Support for multiple asset classes: Stocks, bonds, cryptocurrencies, ETFs, options, derivatives
+- Portfolio Migration: Import/export functionality (CSV/PDF); data backup/restore with historical storage
+- Rebalancing Tools: AI-driven suggestions
+- Portfolio Optimization: Automated algorithms using Modern Portfolio Theory
+- Benchmarking: Compare against market indices
+- Position Tracking: Individual stock/cryptocurrency positions with cost basis (FIFO/LIFO tax lot tracking)
+- Dividend Tracking: Payments and reinvestment
+- Commission Tracking: Fee calculations
+
+=== TRADING INFRASTRUCTURE ===
+- Real-time stock trading platform with market and limit order execution
+- Live market data integration: WebSocket connections for instant updates; Alpha Vantage, Yahoo Finance, IEX Cloud
+- Comprehensive transaction history with audit trails and tax reporting
+- Advanced order types: Stop-loss, take-profit, trailing stops
+- Algorithmic trading strategy implementation with backtesting capabilities
+- Cryptocurrency trading: Multi-exchange support (BTC, ETH via CoinGecko)
+- Professional-grade order management system
+- Manual Trading: Buy/sell with quantity validation
+- Multi-Currency Support: USD, EUR, etc., with real-time conversion (Forex API)
+- Broker Integration: Alpaca API simulation for live trading
+- Top Movers and Market Screeners
+- Economic Calendar: Event impact predictions
+
+=== SOCIAL TRADING PLATFORM ===
+- User profiles with trading statistics and performance leaderboards
+- Follow/unfollow functionality with copy trading automation
+- Community-driven strategy sharing and discussion forums
+- Trading challenges with rewards and achievement systems
+- Expert trader recommendations with verified track records
+- Real-time community market insights and sentiment (social feeds)
+- Social trading competitions with seasonal tournaments
+- Real-Time Chat: WebSocket-based messaging
+- Portfolio Sharing: Public/private visibility
+- Reputation System: Trust scores based on performance
+
+=== AI & ANALYTICS ENGINE ===
+- Machine learning portfolio optimization algorithms
+- Predictive price modeling: Technical and fundamental analysis
+- Real-time sentiment analysis: From news (NewsAPI, Bloomberg) and social media
+- Natural language processing: For market insights and queries
+- Voice command integration: Hands-free trading
+- Advanced risk assessment: Monte Carlo simulations
+- AI-powered trading recommendations and real-time signals
+- Automated market pattern recognition: Head & shoulders, etc.
+- Machine Learning Integration: TensorFlow Java for advanced models
+- Backtesting: Historical strategy testing with feedback loops (user ratings)
+- Pattern Recognition: Technical indicators (RSI, moving average)
+
+=== USER INTERFACE DESIGN ===
+- Modern dark-themed GUI inspired by professional trading platforms
+- Responsive dashboard with customizable widget layouts (drag-and-drop)
+- Interactive charts: Advanced visualization libraries (RealTimeStockCharts.java); technical indicators
+- Real-time data updates with smooth animations
+- Multi-screen navigation: Intuitive user flows (sidebar: Dashboard, Trading, Analytics, Community, Settings)
+- Accessibility compliance: WCAG guidelines; keyboard navigation, screen reader support, high contrast mode, font scaling
+- Mobile-responsive design: Cross-platform compatibility; multi-screen support
+- Customizable workspace: Themes, shortcuts (Ctrl+D for Dashboard, etc.)
+- Specific Screens:
+  - LoginScreen.java: Username/password fields
+  - DashboardScreen.java: Portfolio summary, recent transactions, alerts
+  - TradingScreen.java: Stock search, quantity input, buy/sell
+  - AnalyticsReportsScreen.java: Charts, reports, AI insights
+  - SocialCommunityScreen.java: Forums, leaderboards, chat
+  - SettingsScreen.java: Preferences, themes, notifications
+  - Educational GUI: Tabbed interface for tutorials, tips, glossary
+
+=== NOTIFICATION SYSTEM ===
+- Customizable price alerts with advanced conditions
+- Portfolio performance notifications with threshold triggers
+- Economic event calendar with impact assessments
+- News alerts: Filtered by relevance and preferences
+- Push notifications: Across platforms (email via JavaMail, SMS via Twilio, in-app)
+- Smart notification prioritization
+- Multi-channel delivery
+
+=== GAMIFICATION ELEMENTS ===
+- Achievement system: Trading milestones, badges, certifications
+- Daily challenges: Bonus rewards
+- Experience points and level progression: Unlockable features
+- Leaderboard competitions: Seasonal tournaments
+- Reward redemption: Real-world benefits, virtual goods
+- Trading badges and social recognition
+- Progress tracking: Visual bars, statistics
+- Motivational elements: Streaks, multipliers, special events
+- Point Accrual: For trades, achievements, login streaks
+
+=== DATA MANAGEMENT ===
+- Database integration: H2 with tables (users, portfolios, stocks, positions, transactions)
+- Data backup and restore: Automated systems
+- Import/export: Functionality for portfolios, transactions
+- Real-time data caching: Redis strategies
+- Historical data storage
+- Transaction audit logging
+
+=== EDUCATIONAL CONTENT ===
+- Trading tutorials: Multi-level (beginner, intermediate, advanced)
+- Educational resources: Interactive learning, onboarding wizard
+- Daily tips: Rotating investment tips, market insights
+- Help documentation: Glossary of financial terms
+- Simulated Trading: Practice mode without real money
+- Video Content: Embedded educational videos
+- Learning Progression: Structured content delivery
+
+=== ADVANCED FEATURES ===
+- Multi-currency support: 8 major currencies with real-time conversion
+- Comprehensive tax reporting: Regulatory compliance, FIFO capital gains, PDF/CSV exports
+- Professional-grade charting: Technical indicators, multiple types, interactive controls
+- Market sector analysis: Heat maps
+- Economic calendar: With event impact predictions
+- Top movers and market screeners
+- WebSocket real-time updates: Sub-second latency
+- RESTful API server: Comprehensive endpoints (SecureAPIServer.java)
+- Options and derivatives trading support
+- Hardware Wallet Integration: QR code pairing simulation
+- Compliance Exports: KYC and regulatory reports
+- Data Retention: Configurable policies
+
+=== ALGORITHMIC TRADING ===
+- Strategy Builder: Visual interface (AlgorithmicTradingBuilder.java)
+- Backtesting Engine: Historical performance testing
+- Live Deployment: Scheduled execution
+- Risk Controls: Stop-loss, take-profit, position sizing
+- Strategy Library: Pre-built (moving average, RSI)
+- Performance Monitoring: Real-time
+- Strategy Optimization: Genetic algorithms for parameter tuning
+
+=== SECURITY FRAMEWORK ===
+- Multi-factor authentication: With biometric support
+- JWT token management: Refresh token rotation
+- TOTP-based OTP system: Time-sensitive verification
+- Advanced fraud detection: Behavioral analysis, anomaly detection
+- End-to-end data encryption: Secure API endpoints
+- Rate limiting and DDoS protection
+- Zero-knowledge proof authentication
+- Comprehensive security event logging
+- Audit Logging: Complete user action tracking
+- Access Controls: Role-based permissions
+- Secure APIs: HTTPS, CORS
+
+=== REPORTING & EXPORTS ===
+- Performance Reports: Daily/weekly/monthly summaries
+- Tax Reports: Capital gains/losses with cost basis
+- Compliance Reports: Audit logs, regulatory exports
+- Portfolio Exports: CSV/PDF for external use
+- Transaction History: Detailed trade logs
+
+=== PLATFORM EXTENSIONS ===
+- Web Version: React PWA with offline support
+- Mobile App: Android skeleton with native UI
+- API Access: RESTful endpoints for third-party apps
+- Docker Support: Containerized deployment
+- Monitoring: Micrometer metrics and dashboards
+
+=== ACCESSIBILITY & USABILITY ===
+- Comprehensive Keyboard Navigation: Full support with shortcuts
+- Screen Reader Support: Compatible with tools, announcements
+- High Contrast Mode: Toggle-able for visual accessibility
+- Font Scaling: Increase/decrease/reset for readability
+- Accessibility Control Panel: Centralized options
+- Focus Management: Proper traversal and indicators
+- Tooltips: Helpful hints
+- Error Messages: User-friendly handling
+
+=== INTEGRATION REQUIREMENTS ===
+- Financial Data APIs: Alpha Vantage, Yahoo Finance, IEX Cloud
+- News Aggregation: NewsAPI, Bloomberg Terminal
+- Economic Data: FRED, World Bank APIs
+- Payment Gateways: For premium features
+- Cloud Storage: Backup and synchronization
+- Social Media APIs: For sentiment analysis
+- Broker Integration: For live trading
+- Third-Party Analytics: Charting libraries
+- Other: Twilio (SMS), JavaMail (email), CoinGecko (crypto), Forex API (rates)
+
+=== TECHNICAL SPECIFICATIONS ===
+- 60+ Java Classes: Comprehensive object-oriented architecture
+- Data Models: User.java (with gamification), Portfolio.java, Position.java, Stock.java, Transaction.java, AlertSystem.java, etc.
+- Backend Services: DatabaseManager.java (CRUD, tables), RealTimeStockAPI.java, SocialTradingAPI.java, TransactionPortfolioAPI.java, AIAnalytics.java
+- Utility Classes: SettingsManager.java, RateLimiter.java, TaxReporting.java, MultiCurrencySupport.java, EducationalContent.java, AccessibilityFeatures.java, GamificationSystem.java
+- Security Modules: PasswordSecurity.java, BiometricAuthentication.java, JWTTokenManager.java, DataEncryption.java, OTPSender.java, AdvancedSecurity.java
+- Configuration: Environment variables for API keys; build scripts; update mechanism
+- Scalability: Supports concurrent users; high availability
+
+The application is designed for professional use, with full error handling, extensive logging, and maintainability. It integrates all features into a cohesive, user-friendly platform suitable for individual and enterprise stock trading and portfolio management.

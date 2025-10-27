@@ -1,0 +1,239 @@
+# Stock Portfolio Manager - Application Overview (v1.1.0)
+
+## What is This Application?
+
+The Stock Portfolio Manager is a comprehensive Java Swing desktop application designed for individual investors and portfolio managers to track, analyze, and manage their stock investments. It provides real-time market data, portfolio valuation, trading simulation, and visual analytics in a user-friendly interface.
+
+## Core Functionality
+
+### 📊 **Portfolio Management**
+- **Real-time Valuation**: Live portfolio value calculations with P&L tracking
+- **Position Monitoring**: Detailed view of individual stock holdings
+- **Transaction History**: Complete record of all buy/sell activities
+- **Performance Analytics**: Daily, weekly, and overall portfolio performance
+
+### 📈 **Market Data Integration**
+- **Live Stock Quotes**: Real-time prices from Yahoo Finance API
+- **Fortune 500 Coverage**: Top 50 Fortune 500 companies displayed on dashboard
+- **Automatic Updates**: 30-second refresh intervals with rate limiting
+- **Error Handling**: Graceful degradation when API calls fail
+
+### 💼 **Trading Interface**
+- **Order Execution**: Buy/sell orders with quantity and price tracking
+- **Order History**: Complete transaction log with timestamps
+- **Portfolio Impact**: Immediate calculation of order effects on portfolio
+- **Validation**: Input validation and error prevention
+
+### 📊 **Advanced Visualization**
+- **Portfolio Charts**: Bar charts showing buy vs. current vs. sell prices
+- **Color-Coded Display**: Blue (Buy), Green (Current), Red (Sell) bars
+- **Real-time Updates**: Charts refresh with latest market data
+- **Legend**: Clear labeling for chart interpretation
+
+### 🎨 **User Experience**
+- **Multi-Screen Navigation**: Intuitive sidebar navigation
+- **Theme Support**: Light/dark mode toggle
+- **Responsive Design**: Adapts to different screen sizes
+- **Demo Data**: Pre-loaded with sample portfolios and transactions
+
+## Technical Architecture
+
+### 🏗️ **Application Structure**
+```
+Stock Portfolio Manager v1.1.0/
+├── src/                          # Source code directory
+│   ├── App.java                  # Main application entry point
+│   ├── DashboardScreen.java      # Fortune 500 stocks overview
+│   ├── TradingScreen.java        # Order execution interface
+│   ├── WatchlistScreen.java      # Stock monitoring
+│   ├── SettingsScreen.java       # Theme preferences
+│   ├── SidebarPanel.java         # Navigation component
+│   ├── AdvancedChartPanel.java   # Portfolio visualization
+│   ├── RealTimeStockAPI.java     # Yahoo Finance integration
+│   ├── DatabaseManager.java      # H2 database operations
+│   └── model/                    # Data model classes
+│       ├── User.java
+│       ├── Portfolio.java
+│       ├── Position.java
+│       ├── Transaction.java
+│       └── Stock.java
+├── data/                         # H2 database files
+├── target/                       # Maven build output
+├── pom.xml                       # Maven project configuration
+└── RunStockPortfolio.bat         # Windows execution script
+```
+
+### 🔧 **Technology Stack**
+
+#### **Core Technologies**
+- **Java 8+**: Primary programming language with Swing UI framework
+- **Maven 3.8+**: Build automation and dependency management
+- **H2 Database**: Embedded SQL database for data persistence
+- **HikariCP**: JDBC connection pooling for database efficiency
+
+#### **External Integrations**
+- **Yahoo Finance API**: Primary source for real-time stock data
+- **Jackson JSON**: Processing of API responses
+- **Apache HttpClient**: HTTP requests for API communication
+- **SLF4J**: Logging framework for application monitoring
+
+#### **Development Tools**
+- **JUnit 5**: Unit testing framework
+- **JaCoCo**: Code coverage reporting
+- **Git**: Version control system
+
+### 📡 **API Integration Details**
+
+#### **Yahoo Finance API**
+- **Endpoint**: `https://query1.finance.yahoo.com/v7/finance/quote`
+- **Data Provided**: Real-time quotes, daily change, volume, market cap
+- **Rate Limiting**: 60 requests per minute with semaphore control
+- **Authentication**: No API key required (free tier)
+- **Error Handling**: Automatic retry with exponential backoff
+
+#### **Data Flow**
+1. **Request Formation**: Symbol-based queries for stock data
+2. **API Call**: Asynchronous HTTP requests with timeout handling
+3. **Response Processing**: JSON parsing and data extraction
+4. **Data Storage**: Caching in memory with periodic refresh
+5. **UI Update**: Swing thread-safe updates to display components
+
+### 💾 **Database Architecture**
+
+#### **H2 Database Schema**
+- **Users Table**: Authentication and user profile data
+- **Portfolios Table**: Portfolio containers with metadata
+- **Positions Table**: Individual stock holdings with quantities and prices
+- **Transactions Table**: Complete trade history with timestamps
+- **Stocks Table**: Stock metadata and market data cache
+
+#### **Connection Management**
+- **HikariCP Pool**: Efficient connection pooling
+- **Thread Safety**: Synchronized access to database operations
+- **Auto-Initialization**: Schema creation and demo data seeding
+- **Backup Strategy**: File-based database with easy backup/restore
+
+### 🎯 **Key Features Deep Dive**
+
+#### **Dashboard Screen**
+- **Fortune 500 Display**: Top 50 companies with real-time data
+- **Portfolio Metrics**: Value, P&L, trade count info cards
+- **Navigation Hub**: Direct access to all application features
+- **Asynchronous Loading**: Non-blocking UI during data fetching
+
+#### **Chart Visualization**
+- **Bar Chart Format**: Buy (Blue), Current (Green), Sell (Red) bars
+- **Data Source**: Real portfolio positions and transaction history
+- **Real-time Refresh**: Updates with latest market prices
+- **Error States**: Graceful handling when no data available
+
+#### **Real-Time Updates**
+- **Update Frequency**: 30-second intervals for market data
+- **Background Processing**: CompletableFuture for non-blocking operations
+- **Rate Management**: Semaphore-based API call throttling
+- **Error Recovery**: Automatic retry logic for failed requests
+
+#### **User Interface**
+- **Java Swing**: Native desktop UI components
+- **Theme Support**: Light/dark mode with persistent settings
+- **Responsive Layout**: GridBagLayout for flexible component arrangement
+- **Accessibility**: Keyboard navigation and screen reader support
+
+## Installation & Setup
+
+### **System Requirements**
+- **OS**: Windows 10+, macOS 10.14+, Linux (Ubuntu 18.04+)
+- **Java**: JDK 8+ (recommended: JDK 11+)
+- **Maven**: 3.6.3+ (recommended: 3.8.6+)
+- **RAM**: 512MB minimum, 1GB recommended
+- **Storage**: 200MB free disk space
+- **Network**: Stable internet for stock data
+
+### **Quick Start**
+1. **Install Prerequisites**: Java JDK and Apache Maven
+2. **Clone/Download**: Get the project files
+3. **Navigate**: `cd stock-portfolio-manager`
+4. **Build**: `mvn clean compile`
+5. **Run**: `mvn exec:java -Dexec.mainClass="App"`
+6. **Login**: Use "demo"/"demo123" for demo access
+
+### **Alternative Execution**
+- **Batch Script**: Double-click `RunStockPortfolio.bat` (Windows)
+- **Manual Java**: `java -cp "target/classes;target/lib/*" App`
+- **IDE**: Import as Maven project and run `App.java`
+
+## Target Users
+
+### **Primary Audience**
+- **Individual Investors**: Track personal stock portfolios
+- **Finance Students**: Learn portfolio management concepts
+- **Developers**: Study Java desktop application development
+- **Small Traders**: Monitor positions without broker fees
+
+### **Use Cases**
+- **Portfolio Tracking**: Monitor investment performance
+- **Market Research**: Analyze Fortune 500 company data
+- **Trading Practice**: Simulate trades before real execution
+- **Financial Education**: Understand stock market dynamics
+
+## Security & Privacy
+
+### **Data Protection**
+- **Local Storage**: All data stored on user's computer
+- **No Cloud Sync**: No external data transmission
+- **Encryption**: Database files are encrypted at rest
+- **Access Control**: Username/password authentication
+
+### **Network Security**
+- **HTTPS Only**: All API calls use secure connections
+- **Rate Limiting**: Prevents excessive API usage
+- **Error Handling**: No sensitive data in error messages
+- **Offline Mode**: Functions without internet when needed
+
+## Future Development Roadmap
+
+### **Phase 1: Enhanced Analytics**
+- Advanced technical indicators
+- Historical price charts
+- Portfolio optimization suggestions
+- Risk assessment metrics
+
+### **Phase 2: Extended Platforms**
+- Web application version
+- Mobile app (Android/iOS)
+- REST API for third-party integration
+- Multi-user support
+
+### **Phase 3: Advanced Features**
+- Real broker API integration
+- Options and derivatives trading
+- Automated trading strategies
+- Social portfolio sharing
+
+### **Phase 4: Enterprise Features**
+- Multi-portfolio management
+- Client reporting system
+- Compliance and audit trails
+- Advanced security features
+
+## Support & Maintenance
+
+### **Documentation**
+- **README.md**: Technical setup and usage guide
+- **SOFTWARE_REQUIREMENTS.txt**: Detailed installation instructions
+- **TODO.md**: Development status and roadmap
+- **Inline Comments**: Comprehensive code documentation
+
+### **Troubleshooting**
+- **Log Files**: `application.log` for runtime issues
+- **Build Logs**: Maven output for compilation problems
+- **Database Issues**: Delete lock files and restart
+- **API Problems**: Check internet connectivity and Yahoo Finance status
+
+### **Community**
+- **GitHub Issues**: Bug reports and feature requests
+- **Code Reviews**: Pull request feedback
+- **Documentation**: Wiki and README updates
+- **Version Releases**: Tagged releases with changelogs
+
+This application represents a solid foundation for personal portfolio management with room for extensive future enhancements while maintaining simplicity and reliability.

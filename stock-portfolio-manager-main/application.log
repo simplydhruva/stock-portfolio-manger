@@ -1,0 +1,74 @@
+2025-10-03 12:42:13 [INFO] User registered successfully: shresth
+2025-10-03 12:42:15 [WARN] Failed login attempt for user: shresth (attempt 1)
+2025-10-03 12:42:29 [INFO] Successful login for user: shresth
+2025-10-03 18:19:31 [WARN] Failed login attempt for non-existent user: shresth
+2025-10-03 18:20:15 [INFO] User registered successfully: shresth
+2025-10-03 18:20:19 [INFO] Successful login for user: shresth
+2025-10-03 18:34:25 [INFO] Successful login for user: shresth
+2025-10-03 18:57:03 [INFO] Successful login for user: shresth
+2025-10-03 19:42:02 [INFO] Successful login for user: shresth
+2025-10-17 13:28:02 [INFO] User registered successfully: aadrit
+2025-10-17 13:28:14 [INFO] Successful login for user: aadrit
+2025-10-17 13:30:59 [INFO] Successful login for user: aadrit
+2025-10-21 16:27:10 [WARN] Failed login attempt for non-existent user: a
+2025-10-21 16:27:42 [WARN] Registration failed: Username already exists: aadrit
+2025-10-21 16:28:07 [INFO] Successful login for user: aadrit
+2025-10-21 16:37:53 [WARN] Failed login attempt for non-existent user: Aadrit
+2025-10-21 16:38:08 [WARN] Failed login attempt for non-existent user: Aadrit
+2025-10-21 16:38:14 [INFO] Successful login for user: aadrit
+2025-10-21 17:20:28 [INFO] Successful login for user: aadrit
+2025-10-21 17:34:59 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-21 17:35:08 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-21 17:35:57 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-21 17:36:07 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-21 17:36:47 [INFO] User registered successfully: aadrit
+2025-10-21 17:37:00 [INFO] Successful login for user: aadrit
+2025-10-21 18:03:28 [INFO] Successful login for user: aadrit
+2025-10-21 18:59:01 [WARN] Failed login attempt for user: aadrit (attempt 1)
+2025-10-21 18:59:10 [INFO] Successful login for user: aadrit
+2025-10-21 19:08:59 [INFO] Successful login for user: aadrit
+2025-10-21 19:33:10 [INFO] Successful login for user: aadrit
+2025-10-21 19:40:50 [INFO] Successful login for user: aadrit
+2025-10-21 19:45:57 [INFO] Successful login for user: aadrit
+2025-10-21 19:50:21 [INFO] Successful login for user: aadrit
+2025-10-21 20:17:34 [INFO] Successful login for user: aadrit
+2025-10-21 20:25:17 [INFO] Successful login for user: aadrit
+2025-10-21 20:34:32 [INFO] Successful login for user: aadrit
+2025-10-21 20:47:33 [INFO] Successful login for user: aadrit
+2025-10-26 20:00:14 [INFO] Successful login for user: aadrit
+2025-10-26 20:20:04 [INFO] Successful login for user: aadrit
+2025-10-26 20:36:49 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-26 20:36:51 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-26 20:36:53 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-26 20:36:54 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-26 20:37:35 [INFO] User registered successfully: khush
+2025-10-26 20:37:48 [INFO] Successful login for user: khush
+2025-10-26 20:50:12 [WARN] Failed login attempt for non-existent user: aadrit
+2025-10-26 20:50:25 [INFO] Successful login for user: khush
+2025-10-26 21:12:59 [INFO] Successful login for user: khush
+2025-10-26 21:25:11 [INFO] Successful login for user: khush
+2025-10-26 22:02:05 [INFO] Successful login for user: khush
+2025-10-26 22:06:31 [INFO] Successful login for user: khush
+2025-10-26 22:09:28 [INFO] Successful login for user: khush
+2025-10-26 22:12:24 [INFO] Successful login for user: khush
+2025-10-26 22:17:53 [INFO] Successful login for user: khush
+2025-10-26 22:20:48 [INFO] Successful login for user: khush
+2025-10-26 22:24:10 [INFO] Successful login for user: khush
+2025-10-26 22:32:13 [INFO] Successful login for user: khush
+2025-10-26 22:34:55 [INFO] Successful login for user: khush
+2025-10-26 22:37:26 [INFO] Successful login for user: khush
+2025-10-26 23:41:51 [INFO] Successful login for user: khush
+2025-10-26 23:44:34 [INFO] Successful login for user: khush
+2025-10-26 23:50:07 [INFO] Successful login for user: khush
+2025-10-26 23:54:43 [INFO] Successful login for user: khush
+2025-10-27 00:09:28 [WARN] Failed login attempt for user: khush (attempt 1)
+2025-10-27 00:09:36 [INFO] Successful login for user: khush
+2025-10-27 00:34:03 [INFO] Successful login for user: khush
+2025-10-27 00:40:27 [INFO] Successful login for user: khush
+2025-10-27 00:49:10 [INFO] Successful login for user: khush
+2025-10-27 01:04:56 [INFO] Successful login for user: khush
+2025-10-27 01:17:28 [INFO] Successful login for user: khush
+2025-10-27 01:20:22 [INFO] Successful login for user: khush
+2025-10-27 01:24:27 [INFO] Successful login for user: khush
+2025-10-27 01:25:45 [INFO] Successful login for user: khush
+2025-10-27 01:44:26 [INFO] Successful login for user: khush

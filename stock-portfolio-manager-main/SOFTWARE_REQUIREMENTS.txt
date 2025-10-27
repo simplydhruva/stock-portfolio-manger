@@ -1,0 +1,307 @@
+# Stock Portfolio Manager - Software Requirements & Technical Specifications
+
+## Required Software and Tools
+
+### 1. Java Development Kit (JDK)
+- **Version**: Java 8 or higher (recommended: Java 11 LTS or Java 17 LTS)
+- **Purpose**: Compile and run the Java Swing application
+- **Architecture**: 64-bit recommended for better performance
+- **Download**: https://adoptium.net/temurin/releases/ (Eclipse Temurin)
+- **Installation Check**: Run `java -version` in command prompt/terminal
+- **Environment Variable**: Set JAVA_HOME to JDK installation directory
+
+### 2. Apache Maven
+- **Version**: 3.6.3 or higher (recommended: 3.8.6+)
+- **Purpose**: Build automation, dependency management, and project compilation
+- **Download**: https://maven.apache.org/download.cgi
+- **Installation Check**: Run `mvn -version` in command prompt/terminal
+- **Environment Variable**: Set MAVEN_HOME and add to PATH
+
+### 3. Git (Optional but Recommended)
+- **Version**: 2.30.0 or higher
+- **Purpose**: Version control, repository management, and collaboration
+- **Download**: https://git-scm.com/downloads
+
+### 4. Internet Connection
+- **Purpose**: Real-time stock data from Yahoo Finance API
+- **Requirements**: Stable broadband connection (minimum 1 Mbps)
+- **Fallback**: Application works offline with cached data (limited functionality)
+
+## Installation Steps
+
+### Windows Installation (Primary Development Platform)
+
+1. **Install Java JDK**:
+   - Download Eclipse Temurin JDK 11+ from adoptium.net
+   - Run installer as administrator
+   - Set environment variables:
+     ```
+     JAVA_HOME = C:\Program Files\Eclipse Adoptium\jdk-11.x.x
+     PATH = %PATH%;%JAVA_HOME%\bin
+     ```
+
+2. **Install Maven**:
+   - Download Maven binary zip (apache-maven-3.8.6-bin.zip)
+   - Extract to `C:\Program Files\Apache\Maven\`
+   - Set environment variables:
+     ```
+     MAVEN_HOME = C:\Program Files\Apache\Maven\apache-maven-3.8.6
+     PATH = %PATH%;%MAVEN_HOME%\bin
+     ```
+
+3. **Verify Installation**:
+   ```cmd
+   java -version
+   mvn -version
+   ```
+
+### Linux Installation (Ubuntu/Debian)
+
+```bash
+# Update package index
+sudo apt update
+
+# Install Java 11
+sudo apt install openjdk-11-jdk
+
+# Install Maven
+sudo apt install maven
+
+# Verify installations
+java -version
+mvn -version
+```
+
+### macOS Installation
+
+```bash
+# Install Java using Homebrew
+brew install openjdk@11
+
+# Install Maven using Homebrew
+brew install maven
+
+# Verify installations
+java -version
+mvn -version
+```
+
+## Application Execution Methods
+
+### Method 1: Maven Execution (Recommended)
+```bash
+# Navigate to project directory
+cd stock-portfolio-manager
+
+# Clean and compile
+mvn clean compile
+
+# Run application
+mvn exec:java -Dexec.mainClass="App"
+```
+
+### Method 2: Windows Batch Script
+```cmd
+# Double-click or run in command prompt
+RunStockPortfolio.bat
+```
+
+### Method 3: Manual Java Execution
+```bash
+# Compile project
+mvn compile
+
+# Run with classpath (Windows)
+java -cp "target/classes;target/lib/*" App
+
+# Run with classpath (Linux/macOS)
+java -cp "target/classes:target/lib/*" App
+```
+
+### Method 4: IDE Execution
+- **IntelliJ IDEA**: Open project, right-click App.java → Run
+- **Eclipse**: Import as Maven project, right-click App.java → Run As → Java Application
+- **VS Code**: Install Java extensions, use Run/Debug configurations
+
+## Project Dependencies & Libraries
+
+### Core Dependencies (Maven pom.xml)
+- **H2 Database**: 2.1.214 - Embedded database engine
+- **HikariCP**: 4.0.3 - JDBC connection pooling
+- **Jackson**: 2.13.4 - JSON processing for API responses
+- **Apache HttpClient**: 4.5.14 - HTTP requests (Java 8 compatible)
+- **SLF4J + Simple**: 2.0.7 - Logging framework
+- **JUnit 5**: 5.9.2 - Unit testing framework
+- **Guava**: 32.1.2-jre - Google utilities library
+
+### Build Plugins
+- **Maven Compiler Plugin**: 3.11.0 - Java compilation
+- **Maven Surefire Plugin**: 3.0.0 - Test execution
+- **Maven JAR Plugin**: 3.3.0 - JAR packaging
+- **JaCoCo**: 0.8.8 - Code coverage reporting
+
+## System Requirements
+
+### Minimum Requirements
+- **Operating System**: Windows 10, macOS 10.14, Ubuntu 18.04+
+- **Processor**: Intel/AMD x64, Apple Silicon (M1/M2)
+- **Memory (RAM)**: 512 MB minimum, 1 GB recommended
+- **Storage**: 200 MB free disk space
+- **Display**: 1024x768 resolution minimum
+- **Network**: Stable internet connection for stock data
+
+### Recommended Specifications
+- **Operating System**: Windows 11, macOS 12+, Ubuntu 20.04+
+- **Processor**: Multi-core CPU (4+ cores recommended)
+- **Memory (RAM)**: 2 GB or more
+- **Storage**: SSD with 500 MB free space
+- **Display**: 1920x1080 resolution or higher
+- **Network**: Broadband internet (5+ Mbps)
+
+## Troubleshooting Guide
+
+### Build & Compilation Issues
+
+1. **'java' command not found**:
+   - Verify JAVA_HOME is set correctly
+   - Add %JAVA_HOME%\bin to PATH (Windows) or $JAVA_HOME/bin to PATH (Linux/macOS)
+   - Restart command prompt/terminal
+
+2. **'mvn' command not found**:
+   - Verify MAVEN_HOME is set correctly
+   - Add Maven bin directory to PATH
+   - Restart command prompt/terminal
+
+3. **Maven dependency resolution fails**:
+   ```bash
+   # Clear local repository cache
+   mvn dependency:purge-local-repository
+
+   # Force update dependencies
+   mvn clean compile -U
+   ```
+
+4. **Compilation errors**:
+   ```bash
+   # Clean build artifacts
+   mvn clean
+
+   # Check Java version compatibility
+   java -version
+
+   # Recompile
+   mvn compile
+   ```
+
+### Runtime Issues
+
+1. **Application won't start**:
+   - Check `application.log` for error messages
+   - Verify database files in `data/` directory aren't corrupted
+   - Ensure no other instances are running (check task manager)
+
+2. **Database connection errors**:
+   - Delete `data/stockportfolio.lock.db` file
+   - Restart application to recreate database
+
+3. **API connection failures**:
+   - Verify internet connectivity
+   - Check Yahoo Finance API availability
+   - Application works offline with cached data
+
+4. **UI display issues**:
+   - Ensure Java Swing is supported on the system
+   - Check display scaling settings (Windows: 100% recommended)
+   - Verify sufficient RAM for UI rendering
+
+### Performance Issues
+
+1. **Slow application startup**:
+   - Increase JVM heap size: `java -Xmx1024m -cp ... App`
+   - Check available system RAM
+   - Close other memory-intensive applications
+
+2. **UI freezing during stock updates**:
+   - Ensure stable internet connection
+   - Check API rate limiting (60 requests/minute)
+   - Monitor system resources during updates
+
+3. **High memory usage**:
+   - Monitor JVM heap usage with task manager
+   - Consider increasing heap size for large portfolios
+   - Check for memory leaks in application logs
+
+## Environment Configuration
+
+### Windows Environment Variables
+```
+JAVA_HOME = C:\Program Files\Eclipse Adoptium\jdk-11.x.x
+MAVEN_HOME = C:\Program Files\Apache\Maven\apache-maven-3.8.6
+PATH = %PATH%;%JAVA_HOME%\bin;%MAVEN_HOME%\bin
+```
+
+### Linux/macOS Environment Variables
+```bash
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+export MAVEN_HOME=/usr/share/maven
+export PATH=$PATH:$JAVA_HOME/bin:$MAVEN_HOME/bin
+```
+
+### Proxy Configuration (Corporate Networks)
+```xml
+<!-- Add to ~/.m2/settings.xml -->
+<proxies>
+  <proxy>
+    <id>company-proxy</id>
+    <active>true</active>
+    <protocol>http</protocol>
+    <host>proxy.company.com</host>
+    <port>8080</port>
+  </proxy>
+</proxies>
+```
+
+## Development Environment Setup
+
+### Recommended IDEs
+- **IntelliJ IDEA Ultimate/Community**: Full Maven and Java support
+- **Eclipse IDE**: With Maven plugin (m2e)
+- **Visual Studio Code**: With Java Extension Pack
+- **NetBeans**: Built-in Maven support
+
+### VS Code Extensions (if using VS Code)
+- Extension Pack for Java
+- Maven for Java
+- Java Test Runner
+- Java Debugger
+
+## Network & Security Considerations
+
+### Required Network Access
+- **Yahoo Finance API**: `https://query1.finance.yahoo.com/*`
+- **Maven Central**: `https://repo.maven.apache.org/maven2/*`
+- **No inbound ports**: Application doesn't listen on network ports
+
+### Security Features
+- **Local database**: All data stored locally (no cloud storage)
+- **No external accounts**: No user registration or cloud services
+- **API rate limiting**: Prevents excessive external API calls
+- **Error handling**: Prevents information leakage in error messages
+
+## Support & Maintenance
+
+### Log Files
+- **Application logs**: `application.log` in project root
+- **Maven logs**: Console output during build/run
+- **System logs**: OS event logs for system-level issues
+
+### Backup & Recovery
+- **Database backup**: Copy `data/stockportfolio.mv.db` file
+- **Configuration backup**: Save any custom settings
+- **Code backup**: Use Git for version control
+
+### Update Process
+1. Pull latest changes from repository
+2. Run `mvn clean compile` to update dependencies
+3. Test application functionality
+4. Deploy updated version
